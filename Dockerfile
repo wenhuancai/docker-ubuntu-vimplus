@@ -4,6 +4,7 @@ MAINTAINER WenHuan Cai "452939854@qq.com"
 RUN apt-get update 
 RUN apt-get install -y sudo
 RUN apt-get install -y git
+RUN apt-get install -y lsb-core
 RUN adduser --disabled-password --gecos '' cwh
 RUN adduser cwh sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
