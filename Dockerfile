@@ -12,3 +12,8 @@ USER cwh
 RUN git clone https://github.com/chxuan/vimplus.git ~/.vimplus
 WORKDIR  ~/.vimplus
 RUN cd  ~/.vimplus && ./install.sh
+RUN git clone https://go.googlesource.com/go ~/go && \
+    cd ~/go && \
+    git checkout go1.12.7
+RUN     cd ~/go/src && ./all.bash
+WORKDIR ~
