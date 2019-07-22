@@ -1,4 +1,4 @@
-#Version: 0.0.1
+#nux-amd64.tar.gzVersion: 0.0.1
 From ubuntu:18.04
 MAINTAINER WenHuan Cai "452939854@qq.com"
 RUN apt-get update 
@@ -10,10 +10,9 @@ RUN adduser cwh sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER cwh
 RUN git clone https://github.com/chxuan/vimplus.git ~/.vimplus
-WORKDIR  ~/.vimplus
-RUN cd  ~/.vimplus && ./install.sh
-RUN git clone https://go.googlesource.com/go ~/go && \
-    cd ~/go && \
-    git checkout go1.12.7
-RUN     cd ~/go/src && ./all.bash
-WORKDIR ~
+RUN cd  ~/.vimplus && ./install.sh 
+RUN wget https://dl.google.com/go/go1.12.7.linux-amd64.tar.gz
+#COPY go1.12.7.linux-amd64.tar.gz go1.12.7.linux-amd64.tar.gz
+RUN sudo tar -C /usr/local -xzf go1.12.7.linux-amd64.tar.gz
+RUN export PATH=$PATH:/usr/local/go/bin
+RUN sudo rm  go1.12.7.linux-amd64.tar.gz
